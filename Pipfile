@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = ">=4.2,<5.3"
+djangorestframework = ">=3.14,<3.17"
+djoser = ">=2.2,<3.0"
+djangorestframework-simplejwt = ">=5.3,<6.0"
+django-filter = ">=23.5"
+pymysql = ">=1.1,<2.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
