@@ -1,8 +1,9 @@
 #!/usr/bin/env python
+"""Django command-line utility for the Little Lemon capstone."""
 import os
 import sys
 
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "LittleLemon.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "littlelemon.settings")
     from django.core.management import execute_from_command_line
     execute_from_command_line(sys.argv)
