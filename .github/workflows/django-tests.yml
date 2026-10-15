@@ -1,0 +1,38 @@
+name: Django capstone tests
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  django-tests:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: capstone_ci_password
+          MYSQL_DATABASE: menu_db
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -pcapstone_ci_password"
+          --health-interval=10s --health-timeout=5s --health-retries=8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Check migrations and run tests against MySQL
+        env:
+          DB_NAME: menu_db
+          DB_USER: root
+          DB_PASSWORD: capstone_ci_password
+          DB_HOST: 127.0.0.1
+          DB_PORT: '3306'
+          DJANGO_SECRET_KEY: github-actions-testing-only
+        run: |
+          python manage.py check
+          python manage.py makemigrations --check --dry-run
+          python manage.py migrate
+          python manage.py test

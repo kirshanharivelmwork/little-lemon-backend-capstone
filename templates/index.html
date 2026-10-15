@@ -1,0 +1,13 @@
+{% extends "restaurant/base.html" %}
+{% block title %}Little Lemon | Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">CHICAGO · MEDITERRANEAN FLAVORS</p>
+    <h1>A little zest<br>goes a long way.</h1>
+    <p>Seasonal ingredients, bright flavors, and a table waiting for you.</p>
+    <a class="button" href="{% url 'book' %}">Reserve a table</a>
+  </div>
+  <div class="lemon-art" aria-hidden="true">🍋</div>
+</section>
+{% endblock %}

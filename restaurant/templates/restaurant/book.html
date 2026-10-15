@@ -1,4 +1,5 @@
 {% extends "restaurant/base.html" %}
+{% load static %}
 {% block title %}Book a table | Little Lemon{% endblock %}
 {% block content %}
 <section class="panel">
@@ -21,4 +22,4 @@
   <p class="small">Already booked times are disabled automatically.</p>
 </section>
 {% endblock %}
-{% block scripts %}<script src="{% load static %}{% static 'restaurant/booking.js' %}"></script>{% endblock %}
+{% block scripts %}<script src="{% static 'restaurant/booking.js' %}"></script>{% endblock %}
